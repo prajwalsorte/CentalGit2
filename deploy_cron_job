@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Deploy cron job
+      cron:
+        name: "Set rsync job"
+        user: root
+        minute: "5"
+        hour: "4"
+        job: "rsync -avz /path/to/folder1 /path/to/folder1 2>&1"
